@@ -1,0 +1,41 @@
+{
+    "name": "http",
+    "version": "1.1",
+    "protocol": "./lib/examples/protocols/http/http.js",
+    
+    "constructor": "getURI",
+    "destructor": "end",
+
+    "procedure": {
+        "getURI": {
+            "true": {
+                "method": "getRequestHeader",
+                "args": [
+                
+                ]
+            },
+            "waitForData": "true"
+        },
+        "getRequestHeader": {
+            "write": {
+                "method": "end",
+                "args": [
+                    
+                ]
+            },
+            "continue": {
+                "method": "getRequestHeader",
+                "args": [
+                    
+                ]
+            },
+            "waitForData": "true"
+        },
+        "write": {
+            "waitForData": "false"
+        },
+        "end": {
+            "waitForData": "false"
+        }
+    }
+}
